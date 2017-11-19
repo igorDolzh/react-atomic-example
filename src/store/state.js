@@ -1,8 +1,8 @@
 import { stateA } from './atomic'
 import { cursor } from 'atom-observable'
 
-export let appC = cursor(stateA,['app'])
+export let todoListC = cursor(stateA,['todoList'])
 
 export default {
-    appC
+    todoListC
 }
