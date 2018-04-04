@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { atom, watch, deref, reset, swap } from 'atom-observable'
-import { SubsAtoms } from './store/atomic'
-import { todoListC } from './store/state'
+import { subscribe } from 'react-atomic'
+import { todoListA } from './store/state'
 import logo from './logo.svg';
 import TodoList from './TodoList'
 import './App.css';
@@ -16,7 +16,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to TodoList React-Atomic example</h1>
         </header>
-       <TodoList className="Wrap" todoList={todoList}/>
+        <TodoList className="Wrap" todoList={todoList} />
       </div>
     );
   }
@@ -24,6 +24,6 @@ class App extends Component {
 
 export default SubsAtoms({
   subs: () => ({
-    todoList: todoListC
+    todoList: todoListA
   })
-},App);
+}, App);
