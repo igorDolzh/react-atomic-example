@@ -1,6 +1,21 @@
-import { cursor, atom, deref } from 'atom-observable'
+import { Atom } from 'react-atomic'
+class Todolist extends Atom {
+    constructor(atom) {
+        super(atom)
+    }
 
-let todoListA = [{
+    count = () => {
+        return this.value.length
+    }
+
+    appendTodolist = (todo) => this.atom.reset([...this.atom.deref(), todo])
+
+    deleteTodolist = (id) => this.atom.reset(this.atom.deref().filter((todo) => {
+        if (todo.id !== id) return todo;
+    }))
+}
+
+export default new Todolist([{
     id: 1,
     text: 'Write todo1'
 }, {
@@ -9,11 +24,5 @@ let todoListA = [{
 }, {
     id: 3,
     text: 'Write READ.ME'
-}]
+}])
 
-
-export let appendTodolist = (todo) => todoListA.reset([...deref(todoListA), todo])
-
-export let deleteTodolist = (id) => todoListA.reset(deref(todoListA).filter((todo) => {
-    if (todo.id !== id) return todo;
-}))

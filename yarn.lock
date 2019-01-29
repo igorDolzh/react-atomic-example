@@ -5218,9 +5218,9 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-atomic@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-atomic/-/react-atomic-1.0.0.tgz#f3b7e6f5a11f35897483705b5332547b148cd92d"
+react-atomic@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/react-atomic/-/react-atomic-1.1.9.tgz#b3a8184e4715deff4a13e5a3564eda31e29c15d7"
   dependencies:
     axios "^0.17.0"
     babel-jest "^20.0.3"

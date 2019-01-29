@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { atom, watch, deref, reset, swap } from 'atom-observable'
-import { todoListA, appendTodolist, deleteTodolist } from './store/state'
 
 console.clear();
 
@@ -49,24 +48,24 @@ const TodoList = ({ todos, remove }) => {
 class TodoApp extends React.Component {
   constructor(props) {
     super(props)
-    this.id = props.todoList ? props.todoList.length : 0
+    this.id = props.todoList && props.actions.count ? props.actions.count() : 0
   }
 
   addTodo(val) {
-    let { todoList } = this.props
+    let { todoList, actions } = this.props
     const todo = { id: ++this.id, text: val }
-    appendTodolist(todo)
+    actions.appendTodolist(todo)
   }
 
   handleRemove(id) {
-    deleteTodolist(id)
+    this.props.actions.deleteTodolist(id)
   }
 
   render() {
     let { todoList } = this.props
     return (
       <div className={this.props.className}>
-        <Title todoCount={todoList.length} />
+        {/* <Title todoCount={todoList.count()} /> */}
         <TodoForm addTodo={this.addTodo.bind(this)} />
         <TodoList
           todos={todoList}
